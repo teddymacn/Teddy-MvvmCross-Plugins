@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Media;
-using MvvmCross.Droid.Platform;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +7,7 @@ using System.Linq;
 
 namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
 {
-    public class MvxSimpleAudioPlayer : MvxAndroidTask, IMvxSimpleAudioPlayer
+    public class MvxSimpleAudioPlayer : IMvxSimpleAudioPlayer
     {
         private readonly Dictionary<string, MediaPlayer> _playerCache = new Dictionary<string, MediaPlayer>();
         private MediaPlayer _currentPlayer;

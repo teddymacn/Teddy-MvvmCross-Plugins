@@ -8,6 +8,8 @@ using Windows.ApplicationModel.Activation;
 using MvvmCross.WindowsUWP.Platform;
 using MvvmCross.WindowsUWP.Views;
 using MvvmCross.Forms.Presenter.WindowsUWP;
+using Teddy.MvvmCross.Plugins.SimpleAudioPlayer;
+using Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP;
 
 namespace SimpleAudioPlayer.Demo.UWP
 {
@@ -32,6 +34,7 @@ namespace SimpleAudioPlayer.Demo.UWP
             var xamarinFormsApp = new MvxFormsApp();
             var presenter = new MvxFormsWindowsUWPPagePresenter(rootFrame, xamarinFormsApp);
             Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
+            //Mvx.RegisterSingleton<IMvxSimpleAudioPlayer>(new MvxSimpleAudioPlayer());
 
             return presenter;
         }

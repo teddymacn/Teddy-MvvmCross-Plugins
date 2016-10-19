@@ -5,6 +5,11 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer
     public interface IMvxSimpleAudioPlayer : IDisposable
     {
         /// <summary>
+        /// Gets the current audio path.
+        /// </summary>
+        string CurrentPath { get;}
+
+        /// <summary>
         /// Plays a specified audio URL or local file.
         /// </summary>
         /// <param name="path">

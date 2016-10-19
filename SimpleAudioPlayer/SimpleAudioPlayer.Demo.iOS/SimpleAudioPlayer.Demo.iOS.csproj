@@ -86,11 +86,12 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap\SqlitePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\SimpleAudioPlayerPluginBootstrap.cs" />
     <Compile Include="Linker.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Services\LocalizeService.cs" />
     <Compile Include="Setup.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
@@ -135,6 +136,22 @@
       <HintPath>..\..\packages\MvvmCross.Platform.4.1.0\lib\Xamarin.iOS10\MvvmCross.Platform.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.DownloadCache, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmCross.Plugin.DownloadCache.4.1.0\lib\Xamarin.iOS10\MvvmCross.Plugins.DownloadCache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.DownloadCache.iOS, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmCross.Plugin.DownloadCache.4.1.0\lib\Xamarin.iOS10\MvvmCross.Plugins.DownloadCache.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.File, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmCross.Plugin.File.4.1.0\lib\Xamarin.iOS10\MvvmCross.Plugins.File.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.File.iOS, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmCross.Plugin.File.4.1.0\lib\Xamarin.iOS10\MvvmCross.Plugins.File.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -160,6 +177,16 @@
     <ProjectReference Include="..\SimpleAudioPlayer.Demo.Core\SimpleAudioPlayer.Demo.Core.csproj">
       <Project>{74043e51-ef7b-4ce1-af3f-7612ed1d05b6}</Project>
       <Name>SimpleAudioPlayer.Demo.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS.csproj">
+      <Project>{905105d8-5387-4026-960e-5597db14f3fd}</Project>
+      <Name>Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\Teddy.MvvmCross.Plugins.SimpleAudioPlayer\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.csproj">
+      <Project>{96a76553-fd0d-4aba-b723-fc8d89bda136}</Project>
+      <Name>Teddy.MvvmCross.Plugins.SimpleAudioPlayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
