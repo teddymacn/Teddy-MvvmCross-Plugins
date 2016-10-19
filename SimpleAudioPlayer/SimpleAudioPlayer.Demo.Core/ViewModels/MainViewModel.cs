@@ -18,6 +18,14 @@ namespace SimpleAudioPlayer.Demo.Core.ViewModels
 
         public ICommand PlayCommand { get { return new MvxCommand(() => PlayAudio()); } }
 
+        public ICommand PauseCommand { get { return new MvxCommand(() => _player.Pause()); } }
+
+        public ICommand ResumeCommand { get { return new MvxCommand(() => _player.Resume()); } }
+
+        public ICommand Stop1Command { get { return new MvxCommand(() => _player.Stop(true)); } }
+
+        public ICommand Stop2Command { get { return new MvxCommand(() => _player.Stop(false)); } }
+
         private void PlayAudio()
         {
             //_player.Play("http://169.254.80.80/test.mp3"); // play from URL

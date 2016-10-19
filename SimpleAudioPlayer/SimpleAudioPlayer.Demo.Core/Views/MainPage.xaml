@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SimpleAudioPlayer.Demo.Core.Views.MainPage"
-             xmlns:res="clr-namespace:SimpleAudioPlayer.Demo.Core.Resources;assembly=SimpleAudioPlayer.Demo.Core">
-  <Grid>
-    <Label Text="{res:Translate MainPageTitle}"
-           VerticalOptions="Start"
-           HorizontalOptions="Center"
-           StyleId="MainPageTitleLbl" />
-    <Button Text="Play Audio" Command="{Binding PlayCommand}" VerticalOptions="Center"
+             x:Class="SimpleAudioPlayer.Demo.Core.Views.MainPage">
+  <StackLayout>
+    <Button Text="Play" Command="{Binding PlayCommand}" VerticalOptions="Center"
            HorizontalOptions="Center" />
-  </Grid>
+    <Button Text="Pause" Command="{Binding PauseCommand}" VerticalOptions="Center"
+           HorizontalOptions="Center" />
+    <Button Text="Resume" Command="{Binding ResumeCommand}" VerticalOptions="Center"
+           HorizontalOptions="Center" />
+    <Button Text="Stop (Keep Cache)" Command="{Binding Stop1Command}" VerticalOptions="Center"
+           HorizontalOptions="Center" />
+    <Button Text="Stop (Clear Cache)" Command="{Binding Stop2Command}" VerticalOptions="Center"
+           HorizontalOptions="Center" />
+  </StackLayout>
 </ContentPage>

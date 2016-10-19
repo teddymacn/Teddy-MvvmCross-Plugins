@@ -12,7 +12,6 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
     {
         private readonly Dictionary<string, MediaPlayer> _playerCache = new Dictionary<string, MediaPlayer>();
         private MediaPlayer _currentPlayer;
-        private bool _isSeeking;
 
         #region Public Methods
 
@@ -80,6 +79,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
                     _playerCache.Remove(CurrentPath);
                     CurrentPath = null;
 
+                    _currentPlayer.Reset();
                     _currentPlayer.Release();
                     _currentPlayer = null;
                 }
@@ -170,6 +170,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
         {
             _playerCache.Remove(path);
             if (mp.IsPlaying) mp.Stop();
+            mp.Reset();
             mp.Release();
         }
 
