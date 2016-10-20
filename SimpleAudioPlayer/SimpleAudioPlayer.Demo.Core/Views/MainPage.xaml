@@ -3,15 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SimpleAudioPlayer.Demo.Core.Views.MainPage">
   <StackLayout>
+    <Button Text="Open &amp; Play" Command="{Binding OpenCommand}" VerticalOptions="Center"
+           HorizontalOptions="Center" />
     <Button Text="Play" Command="{Binding PlayCommand}" VerticalOptions="Center"
            HorizontalOptions="Center" />
     <Button Text="Pause" Command="{Binding PauseCommand}" VerticalOptions="Center"
            HorizontalOptions="Center" />
-    <Button Text="Resume" Command="{Binding ResumeCommand}" VerticalOptions="Center"
-           HorizontalOptions="Center" />
-    <Button Text="Stop (Keep Cache)" Command="{Binding Stop1Command}" VerticalOptions="Center"
-           HorizontalOptions="Center" />
-    <Button Text="Stop (Clear Cache)" Command="{Binding Stop2Command}" VerticalOptions="Center"
+    <Button Text="Stop" Command="{Binding StopCommand}" VerticalOptions="Center"
            HorizontalOptions="Center" />
   </StackLayout>
 </ContentPage>

@@ -16,11 +16,11 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
 
         #region Public Methods
 
-        public string CurrentPath { get; private set; }
+        public string Path { get; private set; }
 
         public void Play(string path = null)
         {
-            if (string.IsNullOrEmpty(path) && string.IsNullOrEmpty(CurrentPath))
+            if (string.IsNullOrEmpty(path) && string.IsNullOrEmpty(Path))
                 return;
             
             try
@@ -30,25 +30,25 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
 
                 if (!string.IsNullOrEmpty(path))
                 {
-                    CurrentPath = path.ToLowerInvariant();
+                    Path = path.ToLowerInvariant();
 
-                    if (!_playerCache.TryGetValue(CurrentPath, out _currentPlayer))
+                    if (!_playerCache.TryGetValue(Path, out _currentPlayer))
                     {
-                        if (CurrentPath.StartsWith("http://") || CurrentPath.StartsWith("https://"))
+                        if (Path.StartsWith("http://") || Path.StartsWith("https://"))
                         {
-                            var audioAsset = AVAsset.FromUrl(NSUrl.FromString(CurrentPath));
+                            var audioAsset = AVAsset.FromUrl(NSUrl.FromString(Path));
                             _timeScale = audioAsset.Duration.TimeScale;
                             var audioItem = AVPlayerItem.FromAsset(audioAsset);
                             _currentPlayer = AVPlayer.FromPlayerItem(audioItem);
                         }
                         else
                         {
-                            var audioAsset = AVAsset.FromUrl(NSUrl.FromString("file://" + CurrentPath));
+                            var audioAsset = AVAsset.FromUrl(NSUrl.FromString("file://" + Path));
                             _timeScale = audioAsset.Duration.TimeScale;
                             var audioItem = AVPlayerItem.FromAsset(audioAsset);
                             _currentPlayer = AVPlayer.FromPlayerItem(audioItem);
                         }
-                        _playerCache.Add(CurrentPath, _currentPlayer);
+                        _playerCache.Add(Path, _currentPlayer);
                     }
                     else
                     {
@@ -62,14 +62,14 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
             {
                 Stop();
 
-                Debug.WriteLine("Error playing " + CurrentPath + ": " + ex.Message);
+                Debug.WriteLine("Error playing " + Path + ": " + ex.Message);
                 throw;
             }
         }
 
         public void Stop(bool keepCache = false)
         {
-            if (string.IsNullOrEmpty(CurrentPath)) return;
+            if (string.IsNullOrEmpty(Path)) return;
 
             try
             {
@@ -77,8 +77,8 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
 
                 if (!keepCache)
                 {
-                    _playerCache.Remove(CurrentPath);
-                    CurrentPath = null;
+                    _playerCache.Remove(Path);
+                    Path = null;
                     
                     _currentPlayer.Dispose();
                     _currentPlayer = null;
@@ -86,7 +86,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
             }
             catch(Exception ex)
             {
-                Debug.WriteLine("Error stopping " + CurrentPath + ": " + ex.Message);
+                Debug.WriteLine("Error stopping " + Path + ": " + ex.Message);
                 throw;
             }
         }
@@ -139,7 +139,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
                 }
 
                 // stop and release all playing audios
-                CurrentPath = null;
+                Path = null;
                 _currentPlayer = null;
                 foreach (var path in _playerCache.Keys.ToList())
                 {

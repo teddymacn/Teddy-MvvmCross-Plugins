@@ -14,7 +14,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP
             _player.AutoPlay = false;
         }
 
-        public string CurrentPath { get; private set; }
+        public string Path { get; private set; }
 
         public double Duration
         {
@@ -35,12 +35,12 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP
 
         public void Play(string path = null)
         {
-            if (string.IsNullOrEmpty(path) && string.IsNullOrEmpty(CurrentPath))
+            if (string.IsNullOrEmpty(path) && string.IsNullOrEmpty(Path))
                 return;
 
             if (!string.IsNullOrEmpty(path))
             {
-                CurrentPath = path.ToLowerInvariant();
+                Path = path.ToLowerInvariant();
             }
 
             if (path.StartsWith("http://") || path.StartsWith("https://"))
