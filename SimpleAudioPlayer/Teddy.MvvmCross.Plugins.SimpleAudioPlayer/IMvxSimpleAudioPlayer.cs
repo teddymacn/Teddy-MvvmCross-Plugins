@@ -26,13 +26,13 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer
         /// <summary>
         /// Gets the duration of the audio.
         /// </summary>
-        int Duration { get; }
+        double Duration { get; }
 
         /// <summary>
         /// Seeks to specified position.
         /// </summary>
         /// <param name="pos">The position to seek to.</param>
-        void SeekTo(int pos);
+        void SeekTo(double pos);
 
         /// <summary>
         /// Pauses the playing.

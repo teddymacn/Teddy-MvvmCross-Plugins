@@ -16,11 +16,11 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP
 
         public string CurrentPath { get; private set; }
 
-        public int Duration
+        public double Duration
         {
             get
             {
-                return (int)_player.PlaybackSession.NaturalDuration.TotalMilliseconds;
+                return _player.PlaybackSession.NaturalDuration.TotalMilliseconds;
             }
         }
 
@@ -57,7 +57,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP
             _player.Play();
         }
 
-        public void SeekTo(int pos)
+        public void SeekTo(double pos)
         {
             if (_player.PlaybackSession.CanSeek) _player.PlaybackSession.Position = TimeSpan.FromMilliseconds(pos);
         }

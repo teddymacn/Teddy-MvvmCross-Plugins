@@ -90,7 +90,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
             }
         }
 
-        public int Duration
+        public double Duration
         {
             get
             {
@@ -100,11 +100,11 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
             }
         }
 
-        public void SeekTo(int pos)
+        public void SeekTo(double pos)
         {
             if (_currentPlayer == null) return;
 
-            _currentPlayer.SeekTo(pos);
+            _currentPlayer.SeekTo((int)pos);
         }
 
         public void Pause()
