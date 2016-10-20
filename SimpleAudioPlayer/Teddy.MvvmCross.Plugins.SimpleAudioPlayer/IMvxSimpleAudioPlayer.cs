@@ -21,17 +21,14 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer
         ///     - URL, 
         ///       e.g. http://abc.com/test.mp3
         ///       
-        ///     - Assets, files in device specific assets folder
-        ///       e.g. assets/file.mp3
+        ///     - Assets, relative path assumed to be in the device specific assets folder
+        ///       e.g. test.mp3
         ///       
-        ///     - Local Relative, arbitry local file path relative to the app's device specific local files folder
-        ///       e.g. myaudios/test.mp3
-        ///       
-        ///     - Local Absolute, arbitry local absolute file path the app has access
+        ///     - Local, arbitry local absolute file path the app has access
         ///       e.g. /sdcard/test.mp3
         /// </summary>
         /// <param name="path">
-        ///     A absolute URL, or a local path. If not specified, replay the current audio if exists.
+        ///     The audio path.
         /// </param>
         bool Open(string path);
 

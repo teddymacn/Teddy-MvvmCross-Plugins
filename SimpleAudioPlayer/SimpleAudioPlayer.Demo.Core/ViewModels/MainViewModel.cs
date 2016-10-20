@@ -40,21 +40,23 @@ namespace SimpleAudioPlayer.Demo.Core.ViewModels
                 "http://192.168.2.104"; // my local machine's intranet ip, change to your server's instead
 
             // by default, testing playing audio from Assets
-            //_player.Play("assets/test.mp3");
+            _player.Open("test.mp3");
+            _player.Play();
 
             // comment the code above and uncomment the code below
             // if you want to test playing a remote audio by URL
-            //...
+            //_player.Open(server + "/test.mp3");
+            //_player.Play();
 
             // comment the code above and uncomment the code below
             // if you want to test playing a downloaded audio
-            var request = new MvxFileDownloadRequest(server + "/test.mp3", "test.mp3");
-            request.DownloadComplete += (sender, e) =>
-            {
-                _player.Open(_fileStore.NativePath("test.mp3"));
-                _player.Play();
-            };
-            request.Start();
+            //var request = new MvxFileDownloadRequest(server + "/test.mp3", "test.mp3");
+            //request.DownloadComplete += (sender, e) =>
+            //{
+            //    _player.Open(_fileStore.NativePath("test.mp3"));
+            //    _player.Play();
+            //};
+            //request.Start();
         }
     }
 }

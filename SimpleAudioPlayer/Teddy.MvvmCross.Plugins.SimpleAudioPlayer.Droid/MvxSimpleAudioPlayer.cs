@@ -7,7 +7,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
 {
     public class MvxSimpleAudioPlayer : IMvxSimpleAudioPlayer
     {
-        private const string Assets = "assets/";
+        private const string Root = "/";
         private const double InvalidDuration = -1;
 
         private MediaPlayer _player;
@@ -50,18 +50,19 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
                 Path = path;
                 _player = new MediaPlayer();
                 
-                if (Path.StartsWith(Assets, StringComparison.OrdinalIgnoreCase))
-                {
-                    // files in the Assets folder requires to be opened with a FileDescriptor
-                    var descriptor = Application.Context.Assets.OpenFd(Path.Substring(7));
-                    long start = descriptor.StartOffset;
-                    long end = descriptor.Length;
-                    _player.SetDataSource(descriptor.FileDescriptor, start, end);
-                }
-                else
+                if (Path.StartsWith(Root) || Uri.IsWellFormedUriString(Path, UriKind.Absolute))
                 {
                     // for URL or local file path, simply set data source
                     _player.SetDataSource(Path);
+                }
+                else
+                {
+                    // search for files with relative path in Assets folder
+                    // files in the Assets folder requires to be opened with a FileDescriptor
+                    var descriptor = Application.Context.Assets.OpenFd(Path);
+                    long start = descriptor.StartOffset;
+                    long end = descriptor.Length;
+                    _player.SetDataSource(descriptor.FileDescriptor, start, end);
                 }
                 _player.SetAudioStreamType(Stream.Ring);  // use the ring audio level
                 _player.Completion += (sender, e) => _player.SeekTo(0); // seek to beginning on playing completion

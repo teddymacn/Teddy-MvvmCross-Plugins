@@ -10,117 +10,106 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
 {
     public class MvxSimpleAudioPlayer : IMvxSimpleAudioPlayer
     {
-        private readonly Dictionary<string, AVPlayer> _playerCache = new Dictionary<string, AVPlayer>();
-        private AVPlayer _currentPlayer;
+        private const string Root = "/";
+        private const double InvalidDuration = -1;
+
+        private AVPlayer _player;
         private int _timeScale;
 
-        #region Public Methods
+        #region IMvxSimpleAudioPlayer Members
 
         public string Path { get; private set; }
 
-        public void Play(string path = null)
+        public double Duration
         {
-            if (string.IsNullOrEmpty(path) && string.IsNullOrEmpty(Path))
-                return;
-            
+            get
+            {
+                if (_player == null) return InvalidDuration;
+
+                return _player.CurrentTime.Seconds * 1000;
+            }
+        }
+
+        public bool Open(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                return false;
+
+            // release the previous inner player if opened a new file
+            if (_player != null && !Equals(Path, path))
+                ReleasePlayer();
+
+            if (Equals(Path, path))
+            {
+                // if opened the same audio, simply stop and seek to beginning
+                Stop();
+                Seek(0);
+
+                return true;
+            }
+
             try
             {
+                // if opened a new file set current path and create a new player instance
+                Path = path;
+
                 NSError error = null;
                 AVAudioSession.SharedInstance().SetCategory(AVAudioSession.CategoryPlayback, out error);
 
-                if (!string.IsNullOrEmpty(path))
-                {
-                    Path = path.ToLowerInvariant();
+                AVAsset audioAsset;
+                if (Uri.IsWellFormedUriString(Path, UriKind.Absolute))
+                    audioAsset = AVAsset.FromUrl(NSUrl.FromString(Path));
+                else if (Path.StartsWith(Root))
+                    audioAsset = AVAsset.FromUrl(NSUrl.FromString("file://" + Path));
+                else
+                    audioAsset = AVAsset.FromUrl(NSUrl.FromFilename(Path));
 
-                    if (!_playerCache.TryGetValue(Path, out _currentPlayer))
-                    {
-                        if (Path.StartsWith("http://") || Path.StartsWith("https://"))
-                        {
-                            var audioAsset = AVAsset.FromUrl(NSUrl.FromString(Path));
-                            _timeScale = audioAsset.Duration.TimeScale;
-                            var audioItem = AVPlayerItem.FromAsset(audioAsset);
-                            _currentPlayer = AVPlayer.FromPlayerItem(audioItem);
-                        }
-                        else
-                        {
-                            var audioAsset = AVAsset.FromUrl(NSUrl.FromString("file://" + Path));
-                            _timeScale = audioAsset.Duration.TimeScale;
-                            var audioItem = AVPlayerItem.FromAsset(audioAsset);
-                            _currentPlayer = AVPlayer.FromPlayerItem(audioItem);
-                        }
-                        _playerCache.Add(Path, _currentPlayer);
-                    }
-                    else
-                    {
-                        StopAndSeekToBegin();
-                    }
-                }
-                
-                _currentPlayer.Play();
+                _timeScale = audioAsset.Duration.TimeScale;
+                var audioItem = AVPlayerItem.FromAsset(audioAsset);
+                _player = AVPlayer.FromPlayerItem(audioItem);
+                _player.AddBoundaryTimeObserver(
+                    times: new[] { NSValue.FromCMTime(audioAsset.Duration) },
+                    queue: null,
+                    handler: () => Seek(0));
+
+                return true;
             }
             catch(Exception ex)
             {
                 Stop();
 
                 Debug.WriteLine("Error playing " + Path + ": " + ex.Message);
-                throw;
+                return false;
             }
         }
 
-        public void Stop(bool keepCache = false)
+        public void Play()
         {
-            if (string.IsNullOrEmpty(Path)) return;
+            if (_player == null) return;
 
-            try
-            {
-                StopAndSeekToBegin();
-
-                if (!keepCache)
-                {
-                    _playerCache.Remove(Path);
-                    Path = null;
-                    
-                    _currentPlayer.Dispose();
-                    _currentPlayer = null;
-                }
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine("Error stopping " + Path + ": " + ex.Message);
-                throw;
-            }
+            _player.Play();
         }
 
-        public double Duration
+        public void Stop()
         {
-            get
-            {
-                if (_currentPlayer == null) return 0;
+            if (_player == null) return;
 
-                return _currentPlayer.CurrentTime.Seconds;
-            }
+            _player.Pause();
+            _player.Seek(CMTime.FromSeconds(0, _timeScale));
         }
-
-        public void SeekTo(double pos)
-        {
-            if (_currentPlayer == null) return;
-
-            _currentPlayer.Seek(CMTime.FromSeconds(pos, _timeScale));
-            _currentPlayer.Pause();
-        }
-
+        
         public void Pause()
         {
-            if (_currentPlayer == null) return;
+            if (_player == null) return;
 
-            _currentPlayer.Pause();
+            _player.Pause();
         }
 
-        public void Resume()
+        public void Seek(double pos)
         {
-            if (_currentPlayer == null) return;
+            if (_player == null) return;
 
-            _currentPlayer.Play();
+            _player.Seek(CMTime.FromSeconds(pos, _timeScale));
         }
 
         #endregion
@@ -138,15 +127,10 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
                     // Dispose managed state (managed objects).
                 }
 
-                // stop and release all playing audios
-                Path = null;
-                _currentPlayer = null;
-                foreach (var path in _playerCache.Keys.ToList())
-                {
-                    var mp = _playerCache[path];
+                ReleasePlayer();
 
-                    Release(path, mp);
-                }
+                Path = null;
+                _player = null;
 
                 disposedValue = true;
             }
@@ -167,16 +151,9 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
 
         #region Private Methods
 
-        private void Release(string path, AVPlayer mp)
+        private void ReleasePlayer()
         {
-            _playerCache.Remove(path);
-            mp.Dispose();
-        }
-
-        private void StopAndSeekToBegin()
-        {
-            _currentPlayer.Pause();
-            _currentPlayer.Seek(CMTime.FromSeconds(0, _timeScale));
+            _player.Dispose();
         }
 
         #endregion
