@@ -328,6 +328,19 @@
           "lib/win81/MvvmCross.Platform.dll": {}
         }
       },
+      "MvvmCross.Plugin.File/4.3.0": {
+        "dependencies": {
+          "MvvmCross.Platform": "4.3.0"
+        },
+        "compile": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        },
+        "runtime": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        }
+      },
       "runtime.native.System.IO.Compression/4.1.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
@@ -2374,6 +2387,19 @@
         "runtime": {
           "lib/win81/MvvmCross.Platform.WindowsCommon.dll": {},
           "lib/win81/MvvmCross.Platform.dll": {}
+        }
+      },
+      "MvvmCross.Plugin.File/4.3.0": {
+        "dependencies": {
+          "MvvmCross.Platform": "4.3.0"
+        },
+        "compile": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        },
+        "runtime": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
         }
       },
       "runtime.any.System.Collections/4.0.11": {
@@ -4555,6 +4581,19 @@
         "runtime": {
           "lib/win81/MvvmCross.Platform.WindowsCommon.dll": {},
           "lib/win81/MvvmCross.Platform.dll": {}
+        }
+      },
+      "MvvmCross.Plugin.File/4.3.0": {
+        "dependencies": {
+          "MvvmCross.Platform": "4.3.0"
+        },
+        "compile": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        },
+        "runtime": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.0.10": {
@@ -6779,6 +6818,19 @@
           "lib/win81/MvvmCross.Platform.dll": {}
         }
       },
+      "MvvmCross.Plugin.File/4.3.0": {
+        "dependencies": {
+          "MvvmCross.Platform": "4.3.0"
+        },
+        "compile": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        },
+        "runtime": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        }
+      },
       "runtime.any.System.Collections/4.0.11": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -8967,6 +9019,19 @@
         "runtime": {
           "lib/win81/MvvmCross.Platform.WindowsCommon.dll": {},
           "lib/win81/MvvmCross.Platform.dll": {}
+        }
+      },
+      "MvvmCross.Plugin.File/4.3.0": {
+        "dependencies": {
+          "MvvmCross.Platform": "4.3.0"
+        },
+        "compile": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        },
+        "runtime": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.0.10": {
@@ -11196,6 +11261,19 @@
           "lib/win81/MvvmCross.Platform.dll": {}
         }
       },
+      "MvvmCross.Plugin.File/4.3.0": {
+        "dependencies": {
+          "MvvmCross.Platform": "4.3.0"
+        },
+        "compile": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        },
+        "runtime": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        }
+      },
       "runtime.any.System.Collections/4.0.11": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -13384,6 +13462,19 @@
         "runtime": {
           "lib/win81/MvvmCross.Platform.WindowsCommon.dll": {},
           "lib/win81/MvvmCross.Platform.dll": {}
+        }
+      },
+      "MvvmCross.Plugin.File/4.3.0": {
+        "dependencies": {
+          "MvvmCross.Platform": "4.3.0"
+        },
+        "compile": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
+        },
+        "runtime": {
+          "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll": {},
+          "lib/win81/MvvmCross.Plugins.File.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.0.10": {
@@ -15832,6 +15923,54 @@
         "lib/wpa81/MvvmCross.Platform.WindowsCommon.pri",
         "lib/wpa81/MvvmCross.Platform.dll",
         "lib/wpa81/MvvmCross.Platform.dll.mdb"
+      ]
+    },
+    "MvvmCross.Plugin.File/4.3.0": {
+      "sha512": "/iQsFX9Yxb+CjoXeJ1RGAVFhpbGo3Asz3bWZaO20JpKqNMbn/n1MiEe7afUGb7NTQhxpYunW6q55QbjmBFVkmA==",
+      "type": "package",
+      "path": "MvvmCross.Plugin.File/4.3.0",
+      "files": [
+        "MvvmCross.Plugin.File.4.3.0.nupkg.sha512",
+        "MvvmCross.Plugin.File.nuspec",
+        "content/MonoAndroid/Bootstrap/FilePluginBootstrap.cs.pp",
+        "content/Xamarin.iOS10/Bootstrap/FilePluginBootstrap.cs.pp",
+        "content/net45/Bootstrap/FilePluginBootstrap.cs.pp",
+        "content/netcore45/Bootstrap/FilePluginBootstrap.cs.pp",
+        "content/win81/Bootstrap/FilePluginBootstrap.cs.pp",
+        "content/wp8/Bootstrap/FilePluginBootstrap.cs.pp",
+        "content/wpa81/Bootstrap/FilePluginBootstrap.cs.pp",
+        "lib/MonoAndroid/MvvmCross.Plugins.File.Droid.dll",
+        "lib/MonoAndroid/MvvmCross.Plugins.File.dll",
+        "lib/MonoAndroid/MvvmCross.Plugins.File.dll.mdb",
+        "lib/Xamarin.Mac20/MvvmCross.Plugins.File.dll",
+        "lib/Xamarin.Mac20/MvvmCross.Plugins.File.dll.mdb",
+        "lib/Xamarin.iOS10/MvvmCross.Plugins.File.dll",
+        "lib/Xamarin.iOS10/MvvmCross.Plugins.File.dll.mdb",
+        "lib/Xamarin.iOS10/MvvmCross.Plugins.File.iOS.dll",
+        "lib/dotnet/MvvmCross.Plugins.File.dll",
+        "lib/dotnet/MvvmCross.Plugins.File.dll.mdb",
+        "lib/net45/MvvmCross.Plugins.File.Wpf.dll",
+        "lib/net45/MvvmCross.Plugins.File.dll",
+        "lib/net45/MvvmCross.Plugins.File.dll.mdb",
+        "lib/netcore45/MvvmCross.Plugins.File.dll",
+        "lib/netcore45/MvvmCross.Plugins.File.dll.mdb",
+        "lib/portable-net45+win+wpa81+wp80/MvvmCross.Plugins.File.dll",
+        "lib/portable-net45+win+wpa81+wp80/MvvmCross.Plugins.File.dll.mdb",
+        "lib/portable-win81+wpa81/MvvmCross.Plugins.File.WindowsCommon.dll",
+        "lib/portable-win81+wpa81/MvvmCross.Plugins.File.WindowsCommon.pri",
+        "lib/portable-win81+wpa81/MvvmCross.Plugins.File.dll",
+        "lib/portable-win81+wpa81/MvvmCross.Plugins.File.dll.mdb",
+        "lib/win81/MvvmCross.Plugins.File.WindowsCommon.dll",
+        "lib/win81/MvvmCross.Plugins.File.WindowsCommon.pri",
+        "lib/win81/MvvmCross.Plugins.File.dll",
+        "lib/win81/MvvmCross.Plugins.File.dll.mdb",
+        "lib/wp8/MvvmCross.Plugins.File.WindowsPhone.dll",
+        "lib/wp8/MvvmCross.Plugins.File.dll",
+        "lib/wp8/MvvmCross.Plugins.File.dll.mdb",
+        "lib/wpa81/MvvmCross.Plugins.File.WindowsCommon.dll",
+        "lib/wpa81/MvvmCross.Plugins.File.WindowsCommon.pri",
+        "lib/wpa81/MvvmCross.Plugins.File.dll",
+        "lib/wpa81/MvvmCross.Plugins.File.dll.mdb"
       ]
     },
     "runtime.any.System.Collections/4.0.11": {
@@ -21910,6 +22049,7 @@
       "MvvmCross >= 4.3.0",
       "MvvmCross.Core >= 4.3.0",
       "MvvmCross.Forms.Presenter >= 4.1.4",
+      "MvvmCross.Plugin.File >= 4.3.0",
       "Xamarin.Forms >= 2.3.2.127"
     ],
     "UAP,Version=v10.0": []

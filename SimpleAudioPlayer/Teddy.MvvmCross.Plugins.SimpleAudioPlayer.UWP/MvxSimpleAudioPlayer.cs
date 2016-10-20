@@ -45,8 +45,10 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP
 
             if (path.StartsWith("http://") || path.StartsWith("https://"))
                 _player.Source = MediaSource.CreateFromUri(new Uri(path));
+            else if (path.StartsWith("assets/"))
+                _player.Source = MediaSource.CreateFromUri(new Uri(string.Format("ms-appx:///Assets/" + path.Substring(7), UriKind.Absolute)));
             else
-                _player.Source = MediaSource.CreateFromUri(new Uri(string.Format("ms-appx:///Assets/" + path, UriKind.Absolute)));
+                _player.Source = MediaSource.CreateFromUri(new Uri(path, UriKind.Absolute));
 
             _player.PlaybackSession.Position = TimeSpan.Zero;
             _player.Play();

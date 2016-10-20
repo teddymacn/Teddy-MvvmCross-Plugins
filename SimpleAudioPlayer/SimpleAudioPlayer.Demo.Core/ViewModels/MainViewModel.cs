@@ -32,11 +32,11 @@ namespace SimpleAudioPlayer.Demo.Core.ViewModels
 
         private void PlayAudio()
         {
-            if (Device.OS == TargetPlatform.iOS)
+            if (Device.OS == TargetPlatform.Android)
             {
                 //_player.Play("http://192.168.2.104/test.mp3"); // play from URL
 
-                var request = new MvxFileDownloadRequest("http://192.168.2.104/test.mp3", "test.mp3");
+                var request = new MvxFileDownloadRequest("http://169.254.80.80/test.mp3", "test.mp3");
                 request.DownloadComplete += (sender, e) => _player.Play(_fileStore.NativePath("test.mp3"));
                 request.Start();
             }

@@ -25,7 +25,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
             {
                 if (!string.IsNullOrEmpty(path))
                 {
-                    CurrentPath = path.ToLowerInvariant();
+                    CurrentPath = path;
 
                     if (!_playerCache.TryGetValue(CurrentPath, out _currentPlayer))
                     {
@@ -33,17 +33,15 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
 
                         if (CurrentPath.StartsWith("http://") || CurrentPath.StartsWith("https://"))
                             _currentPlayer.SetDataSource(CurrentPath);
-                        else if (CurrentPath.StartsWith("files/"))
-                            _currentPlayer.SetDataSource(Application.Context.FilesDir + CurrentPath.Substring(5));
-                        else if (CurrentPath.StartsWith("cache/"))
-                            _currentPlayer.SetDataSource(Application.Context.CacheDir + CurrentPath.Substring(5));
-                        else
+                        else if (CurrentPath.StartsWith("assets/"))
                         {
-                            var descriptor = Application.Context.Assets.OpenFd(CurrentPath);
+                            var descriptor = Application.Context.Assets.OpenFd(CurrentPath.Substring(7));
                             long start = descriptor.StartOffset;
                             long end = descriptor.Length;
                             _currentPlayer.SetDataSource(descriptor.FileDescriptor, start, end);
                         }
+                        else
+                            _currentPlayer.SetDataSource(CurrentPath);
                         _currentPlayer.SetAudioStreamType(Stream.Ring);
                         _currentPlayer.Prepare();
                         _playerCache.Add(CurrentPath, _currentPlayer);

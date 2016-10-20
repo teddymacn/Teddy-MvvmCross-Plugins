@@ -4,6 +4,7 @@
     "MvvmCross": "4.3.0",
     "MvvmCross.Core": "4.3.0",
     "MvvmCross.Forms.Presenter": "4.1.4",
+    "MvvmCross.Plugin.File": "4.3.0",
     "Xamarin.Forms": "2.3.2.127"
   },
   "frameworks": {
