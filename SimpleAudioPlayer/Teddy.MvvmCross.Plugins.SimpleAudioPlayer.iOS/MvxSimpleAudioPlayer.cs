@@ -78,7 +78,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
             {
                 Stop();
 
-                Debug.WriteLine("Error playing " + Path + ": " + ex.Message);
+                Debug.WriteLine("Error opening " + Path + ": " + ex.Message);
                 return false;
             }
         }
@@ -109,7 +109,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
         {
             if (_player == null) return;
 
-            _player.Seek(CMTime.FromSeconds(pos, _timeScale));
+            _player.Seek(CMTime.FromSeconds(pos / 1000, _timeScale));
         }
 
         #endregion

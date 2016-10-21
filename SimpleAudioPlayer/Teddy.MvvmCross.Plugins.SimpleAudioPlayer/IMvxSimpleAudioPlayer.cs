@@ -17,14 +17,15 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer
         /// <summary>
         /// Plays a specified audio path.
         /// 
-        /// 4 formats of path are supported:
-        ///     - URL, 
+        /// The following formats of path are supported:
+        ///     - Absolute URL, 
         ///       e.g. http://abc.com/test.mp3
         ///       
-        ///     - Assets, relative path assumed to be in the device specific assets folder
+        ///     - Assets Deployed with App, relative path assumed to be in the device specific assets folder
+        ///       Android and UWP relative to the Assets folder while iOS relative to the App root folder
         ///       e.g. test.mp3
         ///       
-        ///     - Local, arbitry local absolute file path the app has access
+        ///     - Local File System, arbitry local absolute file path the app has access
         ///       e.g. /sdcard/test.mp3
         /// </summary>
         /// <param name="path">
