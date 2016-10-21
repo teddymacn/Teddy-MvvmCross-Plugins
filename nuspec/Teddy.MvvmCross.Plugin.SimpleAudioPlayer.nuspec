@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Teddy.MvvmCross.Plugin.SimpleAudioPlayer</id>
-		<version>1.0.3</version>
+		<version>1.0.4</version>
 		<title>MvvmCross - SimpleAudioPlayer Plugin</title>
 		<authors>teddymacn</authors>
 		<owners>teddymacn</owners>
@@ -15,16 +15,16 @@ This package contains the 'SimpleAudioPlayer' plugin for MvvmCross</description>
 		<tags>mvvm mvvmcross cross xamarin android ios forms monodroid monotouch xamarin.android xamarin.ios xamarin.forms wpf windows8 winrt net net45 netcore wp wpdev windowsphone windowsstore uwp plugin</tags>
 		<dependencies>
 			<group targetFramework="MonoAndroid">
-				<dependency id="MvvmCross.Platform" version="4.1.0" />
+				<dependency id="MvvmCross.Platform" version="4.3.0" />
 			</group>
 			<group targetFramework="Xamarin.iOS10">
-				<dependency id="MvvmCross.Platform" version="4.1.0" />
+				<dependency id="MvvmCross.Platform" version="4.3.0" />
 			</group>
 			<group targetFramework="portable-net45+win8+wpa81+wp8">
-				<dependency id="MvvmCross.Platform" version="4.1.0" />
+				<dependency id="MvvmCross.Platform" version="4.3.0" />
 			</group>
 			<group targetFramework="uap10.0">
-				<dependency id="MvvmCross.Platform" version="4.1.0" />
+				<dependency id="MvvmCross.Platform" version="4.3.0" />
 			</group>
 		</dependencies>
 	</metadata>
