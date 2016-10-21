@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>Teddy.MvvmCross.Plugin.SimpleAudioPlayer</id>
+		<version>1.0.3</version>
+		<title>MvvmCross - SimpleAudioPlayer Plugin</title>
+		<authors>teddymacn</authors>
+		<owners>teddymacn</owners>
+		<licenseUrl>https://mit-license.org/</licenseUrl>
+		<projectUrl>https://github.com/teddymacn/Teddy-MvvmCross-Plugins</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>MvvmCross is the .NET MVVM framework for cross-platform solutions, including Xamarin iOS, Xamarin Android, Xamarin Forms, Windows and Mac.
+
+This package contains the 'SimpleAudioPlayer' plugin for MvvmCross</description>
+		<tags>mvvm mvvmcross cross xamarin android ios forms monodroid monotouch xamarin.android xamarin.ios xamarin.forms wpf windows8 winrt net net45 netcore wp wpdev windowsphone windowsstore uwp plugin</tags>
+		<dependencies>
+			<group targetFramework="MonoAndroid">
+				<dependency id="MvvmCross.Platform" version="4.1.0" />
+			</group>
+			<group targetFramework="Xamarin.iOS10">
+				<dependency id="MvvmCross.Platform" version="4.1.0" />
+			</group>
+			<group targetFramework="portable-net45+win8+wpa81+wp8">
+				<dependency id="MvvmCross.Platform" version="4.1.0" />
+			</group>
+			<group targetFramework="uap10.0">
+				<dependency id="MvvmCross.Platform" version="4.1.0" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>		
+		<!-- src -->
+		<file src="..\SimpleAudioPlayer\Teddy.MvvmCross.Plugins.SimpleAudioPlayer\**\*.cs" 
+			target="src\Teddy.MvvmCross.Plugins.SimpleAudioPlayer" />
+		<file src="..\SimpleAudioPlayer\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP\**\*.cs"	
+			target="src\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP" />
+		<file src="..\SimpleAudioPlayer\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid\**\*.cs" 
+			target="src\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid" />
+		<file src="..\SimpleAudioPlayer\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS\**\*.cs" 
+			target="src\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS" />
+
+		<!-- PCL -->
+		<file src="..\bin\Release\Portable\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.*" target="lib\portable-net45+win+wpa81+wp80" />
+
+		<!-- UWP -->
+		<file src="..\bin\Release\Portable\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.*" target="lib\uap10.0" />
+		<file src="..\bin\Release\UWP\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP.*" target="lib\uap10.0" />
+		<file src="UWPBootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp" target="content\uap10.0\Bootstrap\SimpleAudioPlayerPluginBootstrap.cs.pp" />
+
+		<!-- droid -->
+		<file src="..\bin\Release\Portable\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.*" target="lib\MonoAndroid" />
+		<file src="..\bin\Release\Droid\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid.*" target="lib\MonoAndroid" />
+		<file src="BootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp" target="content\MonoAndroid\Bootstrap\SimpleAudioPlayerPluginBootstrap.cs.pp" />
+
+		<!-- iOS -->
+		<file src="..\bin\Release\Portable\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.*" target="lib\Xamarin.iOS10" />
+		<file src="..\bin\Release\iOS\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS.*" target="lib\Xamarin.iOS10" />
+		<file src="iOSBootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\SimpleAudioPlayerPluginBootstrap.cs.pp" />
+		
+	</files>
+</package>
+
+
+
+
+
+
+
+

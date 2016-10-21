@@ -23,6 +23,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAudioPlayer.Demo.UWP"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP", "SimpleAudioPlayer\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP\Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP.csproj", "{316FC5D9-42E2-442E-8199-4CB596703ACC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspec", "nuspec", "{E30165CF-7964-4287-A20E-B33B49301837}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec\pack.ps1 = nuspec\pack.ps1
+		nuspec\Teddy.MvvmCross.Plugin.SimpleAudioPlayer.nuspec = nuspec\Teddy.MvvmCross.Plugin.SimpleAudioPlayer.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BootstrapContent", "BootstrapContent", "{FA85521D-3F5F-4769-ACE3-9A62BD964FF5}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec\BootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp = nuspec\BootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOSBootstrapContent", "iOSBootstrapContent", "{8367F0CE-4E2D-42F7-AD60-5D8F37C3D92E}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec\iOSBootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp = nuspec\iOSBootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UWPBootstrapContent", "UWPBootstrapContent", "{7D2B8079-D4EA-49B6-8243-EEFE751288A3}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec\UWPBootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp = nuspec\UWPBootstrapContent\SimpleAudioPlayerPluginBootstrap.cs.pp
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -469,5 +490,8 @@ Global
 		{905105D8-5387-4026-960E-5597DB14F3FD} = {F07C1104-2A70-45D1-802C-99B0647438E5}
 		{DB20308E-8E4C-4ED4-85AF-66DA6354F20D} = {6D48C50F-1007-4569-A11A-88B2313E4D02}
 		{316FC5D9-42E2-442E-8199-4CB596703ACC} = {F07C1104-2A70-45D1-802C-99B0647438E5}
+		{FA85521D-3F5F-4769-ACE3-9A62BD964FF5} = {E30165CF-7964-4287-A20E-B33B49301837}
+		{8367F0CE-4E2D-42F7-AD60-5D8F37C3D92E} = {E30165CF-7964-4287-A20E-B33B49301837}
+		{7D2B8079-D4EA-49B6-8243-EEFE751288A3} = {E30165CF-7964-4287-A20E-B33B49301837}
 	EndGlobalSection
 EndGlobal
