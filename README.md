@@ -6,7 +6,7 @@ The `SimpleAudioPlayer` plugin provides cross-platform simple audio play API. It
 
 To deal with absolute file path cross platform, it is suggested to use the [File](https://github.com/MvvmCross/MvvmCross-Plugins/tree/master/File) plugin, use IMvxFileStore.NativePath() method.
 
-For examples, please check the [SimpleAudioPlayer.Demo](https://github.com/teddymacn/Teddy-MvvmCross-Plugins/SimpleAudioPlayer).
+For examples, please check the [SimpleAudioPlayer.Demo](https://github.com/teddymacn/Teddy-MvvmCross-Plugins/tree/master/SimpleAudioPlayer).
 
     public interface IMvxSimpleAudioPlayer : IDisposable
     {
