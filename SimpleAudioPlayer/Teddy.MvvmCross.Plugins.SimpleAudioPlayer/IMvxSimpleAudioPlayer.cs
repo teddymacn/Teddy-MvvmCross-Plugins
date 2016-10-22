@@ -15,7 +15,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer
         double Duration { get; }
 
         /// <summary>
-        /// Plays a specified audio path.
+        /// Opens a specified audio path.
         /// 
         /// The following formats of path are supported:
         ///     - Absolute URL, 
