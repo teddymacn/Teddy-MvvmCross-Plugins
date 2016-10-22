@@ -18,7 +18,7 @@ For examples, please check the [SimpleAudioPlayer.Demo](https://github.com/teddy
         double Duration { get; }
 
         /// <summary>
-        /// Plays a specified audio path.
+        /// Opens a specified audio path.
         /// 
         /// The following formats of path are supported:
         ///     - Absolute URL, 
@@ -58,3 +58,6 @@ For examples, please check the [SimpleAudioPlayer.Demo](https://github.com/teddy
         void Seek(double pos);
     }
 
+### Blogs
+
+- [My First MvvmCross Plugin - SimpleAudioPlayer (Chinese)](http://www.cnblogs.com/teddyma/p/xamarin_mvvmcross_plugin_simpleaudioplayer.html)
