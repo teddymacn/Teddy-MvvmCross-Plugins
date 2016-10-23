@@ -13,14 +13,19 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP
         private readonly MediaPlayer _player;
         private bool _isPlaying;
 
+        public event EventHandler Completion;
+
         public MvxSimpleAudioPlayer()
         {
             _player = BackgroundMediaPlayer.Current;
             _player.AutoPlay = false;
             _player.MediaEnded += (sender, args) =>
             {
-                Seek(0);
                 _isPlaying = false;
+
+                OnCompletion();
+
+                Seek(0);
             };
         }
 
@@ -128,6 +133,9 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP
             if (string.IsNullOrEmpty(Path)) return;
 
             Pause();
+
+            OnCompletion();
+
             Seek(0);
         }
 
@@ -148,5 +156,14 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.UWP
 
             if (_player.PlaybackSession.CanSeek) _player.PlaybackSession.Position = TimeSpan.FromMilliseconds(pos);
         }
+
+        #region Private Methods
+
+        private void OnCompletion()
+        {
+            Completion?.Invoke(this, EventArgs.Empty);
+        }
+
+        #endregion
     }
 }

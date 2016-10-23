@@ -104,7 +104,13 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
                     _player.SetDataSource(descriptor.FileDescriptor, start, end);
                 }
                 _player.SetAudioStreamType(Stream.Ring);  // use the ring audio level
-                _player.Completion += (sender, e) => _player.SeekTo(0); // seek to beginning on playing completion
+                _player.Completion += (sender, e) =>
+                {
+                    OnCompletion();
+
+                    // seek to beginning on playing completion
+                    _player.SeekTo(0);
+                };
                 _player.Prepare();
                 return true;
             }
@@ -132,6 +138,8 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
             {
                 _player.Stop();
 
+                OnCompletion();
+
                 // after _player.Stop(), re-prepare the audio, otherwise, re-play will fail
                 _player.Prepare();
 
@@ -158,6 +166,8 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
         #region IDisposable Support
 
         private bool disposedValue = false; // To detect redundant calls
+
+        public event EventHandler Completion;
 
         protected virtual void Dispose(bool disposing)
         {
@@ -203,6 +213,11 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
 
             // release the player, after what the player could not be reused anymore
             _player.Release();
+        }
+
+        private void OnCompletion()
+        {
+            Completion?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

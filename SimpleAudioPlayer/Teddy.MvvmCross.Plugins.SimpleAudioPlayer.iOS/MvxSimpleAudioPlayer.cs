@@ -109,6 +109,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
                     handler: () =>
                     {
                         _isPlaying = false;
+                        OnCompletion();
                         Seek(0);
                     });
 
@@ -136,6 +137,9 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
             if (_player == null) return;
 
             Pause();
+
+            OnCompletion();
+
             Seek(0);
         }
         
@@ -159,6 +163,8 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
         #region IDisposable Support
 
         private bool disposedValue = false; // To detect redundant calls
+
+        public event EventHandler Completion;
 
         protected virtual void Dispose(bool disposing)
         {
@@ -196,6 +202,11 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
         private void ReleasePlayer()
         {
             _player.Dispose();
+        }
+
+        private void OnCompletion()
+        {
+            Completion?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion
