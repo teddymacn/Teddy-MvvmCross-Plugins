@@ -2,6 +2,8 @@
 
 ### SimpleAudioPlayer
 
+[Nuget Package](https://www.nuget.org/packages/Teddy.MvvmCross.Plugin.SimpleAudioPlayer/)
+
 The `SimpleAudioPlayer` plugin provides cross-platform simple audio play API. It supports Droid, iOS and UWP platforms.
 
 To deal with absolute file path cross platform, it is suggested to use the [File](https://github.com/MvvmCross/MvvmCross-Plugins/tree/master/File) plugin, use IMvxFileStore.NativePath() method.
