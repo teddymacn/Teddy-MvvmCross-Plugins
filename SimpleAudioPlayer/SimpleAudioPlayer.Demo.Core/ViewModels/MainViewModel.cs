@@ -11,6 +11,10 @@ namespace SimpleAudioPlayer.Demo.Core.ViewModels
     {
         private readonly IMvxSimpleAudioPlayer _player;
         private readonly IMvxFileStore _fileStore;
+        private bool _showOpenButton = true;
+        private bool _showPlayButton = false;
+        private bool _showPauseButton = false;
+        private bool _showStopButton = false;
 
         public MainViewModel(IMvxSimpleAudioPlayer player
             , IMvxFileStore fileStore
@@ -18,15 +22,101 @@ namespace SimpleAudioPlayer.Demo.Core.ViewModels
         {
             _player = player;
             _fileStore = fileStore;
+
+            _player.Completion += (sender, e) =>
+            {
+                ShowOpenButton = true;
+                ShowPlayButton = true;
+                ShowPauseButton = false;
+                ShowStopButton = false;
+            };
+        }
+
+        public bool ShowOpenButton
+        {
+            get { return _showOpenButton; }
+            set
+            {
+                _showOpenButton = value;
+                RaisePropertyChanged(() => ShowOpenButton);
+            }
+        }
+        public bool ShowPlayButton
+        {
+            get { return _showPlayButton; }
+            set
+            {
+                _showPlayButton = value;
+                RaisePropertyChanged(() => ShowPlayButton);
+            }
+        }
+
+        public bool ShowPauseButton
+        {
+            get { return _showPauseButton; }
+            set
+            {
+                _showPauseButton = value;
+                RaisePropertyChanged(() => ShowPauseButton);
+            }
+        }
+
+        public bool ShowStopButton
+        {
+            get { return _showStopButton; }
+            set
+            {
+                _showStopButton = value;
+                RaisePropertyChanged(() => ShowStopButton);
+            }
         }
 
         public ICommand OpenCommand { get { return new MvxCommand(() => OpenAudio()); } }
 
-        public ICommand PlayCommand { get { return new MvxCommand(() => _player.Play()); } }
+        public ICommand PlayCommand
+        {
+            get
+            {
+                return new MvxCommand(() =>
+                {
+                    _player.Play();
 
-        public ICommand PauseCommand { get { return new MvxCommand(() => _player.Pause()); } }
+                    ShowOpenButton = false;
+                    ShowPlayButton = false;
+                    ShowPauseButton = true;
+                    ShowStopButton = true;
+                });
+            }
+        }
 
-        public ICommand StopCommand { get { return new MvxCommand(() => _player.Stop()); } }
+        public ICommand PauseCommand
+        {
+            get
+            {
+                return new MvxCommand(() =>
+                {
+                    _player.Pause();
+
+                    ShowPlayButton = true;
+                });
+            }
+        }
+
+        public ICommand StopCommand
+        {
+            get
+            {
+                return new MvxCommand(() =>
+                {
+                    _player.Stop();
+
+                    ShowOpenButton = true;
+                    ShowPlayButton = true;
+                    ShowPauseButton = false;
+                    ShowStopButton = false;
+                });
+            }
+        }
 
         private void OpenAudio()
         {
@@ -58,6 +148,11 @@ namespace SimpleAudioPlayer.Demo.Core.ViewModels
             //    _player.Play();
             //};
             //request.Start();
+
+            ShowPauseButton = true;
+            ShowStopButton = true;
+            ShowPlayButton = false;
+            ShowOpenButton = false;
         }
     }
 }

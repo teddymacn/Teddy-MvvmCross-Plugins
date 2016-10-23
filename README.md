@@ -76,6 +76,11 @@ For examples, please check the [SimpleAudioPlayer.Demo](https://github.com/teddy
         /// </summary>
         /// <param name="pos">The position to seek to.</param>
         void Seek(double pos);
+
+        /// <summary>
+        /// Callback at the end of playing.
+        /// </summary>
+        event EventHandler Completion;		
     }
 
 ### Blogs

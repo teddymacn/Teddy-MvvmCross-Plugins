@@ -4,12 +4,12 @@
              x:Class="SimpleAudioPlayer.Demo.Core.Views.MainPage">
   <StackLayout>
     <Button Text="Open &amp; Play" Command="{Binding OpenCommand}" VerticalOptions="Center"
-           HorizontalOptions="Center" />
+           HorizontalOptions="Center" IsEnabled="{Binding ShowOpenButton}" />
     <Button Text="Play" Command="{Binding PlayCommand}" VerticalOptions="Center"
-           HorizontalOptions="Center" />
+           HorizontalOptions="Center" IsEnabled="{Binding ShowPlayButton}" />
     <Button Text="Pause" Command="{Binding PauseCommand}" VerticalOptions="Center"
-           HorizontalOptions="Center" />
+           HorizontalOptions="Center" IsEnabled="{Binding ShowPauseButton}" />
     <Button Text="Stop" Command="{Binding StopCommand}" VerticalOptions="Center"
-           HorizontalOptions="Center" />
+           HorizontalOptions="Center" IsEnabled="{Binding ShowStopButton}" />
   </StackLayout>
 </ContentPage>
