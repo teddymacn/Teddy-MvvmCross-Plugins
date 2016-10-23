@@ -15,7 +15,25 @@ For examples, please check the [SimpleAudioPlayer.Demo](https://github.com/teddy
         /// </summary>
         string Path { get;}
 
+        /// <summary>
+        /// Gets the duration of the audio in milliseconds.
+        /// </summary>
         double Duration { get; }
+
+        /// <summary>
+        /// Gets the current position in milliseconds.
+        /// </summary>
+        double Position { get; }
+
+        /// <summary>
+        /// Whether or not it is playing.
+        /// </summary>
+        bool IsPlaying { get; }
+
+        /// <summary>
+        /// Gets or sets the current volume.
+        /// </summary>
+        double Volume { get; set; }
 
         /// <summary>
         /// Opens a specified audio path.

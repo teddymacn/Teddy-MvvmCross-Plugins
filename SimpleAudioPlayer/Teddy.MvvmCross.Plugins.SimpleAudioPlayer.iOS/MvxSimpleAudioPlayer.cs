@@ -2,19 +2,18 @@
 using CoreMedia;
 using Foundation;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
 {
     public class MvxSimpleAudioPlayer : IMvxSimpleAudioPlayer
     {
         private const string Root = "/";
-        private const double InvalidDuration = -1;
+        private const double InvalidValue = -1;
 
         private AVPlayer _player;
         private int _timeScale;
+        private bool _isPlaying;
 
         #region IMvxSimpleAudioPlayer Members
 
@@ -24,9 +23,46 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
         {
             get
             {
-                if (_player == null) return InvalidDuration;
+                if (_player == null) return InvalidValue;
 
                 return _player.CurrentTime.Seconds * 1000;
+            }
+        }
+
+        public double Position
+        {
+            get
+            {
+                if (_player == null) return InvalidValue;
+
+                return _player.CurrentTime.Seconds * 1000;
+            }
+        }
+
+        public bool IsPlaying
+        {
+            get
+            {
+                if (_player == null) return false;
+
+                return _isPlaying;
+            }
+        }
+
+        public double Volume
+        {
+            get
+            {
+                if (_player == null) return InvalidValue;
+
+                return _player.Volume;
+            }
+
+            set
+            {
+                if (_player == null) return;
+
+                _player.Volume = (float)value;
             }
         }
 
@@ -70,7 +106,11 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
                 _player.AddBoundaryTimeObserver(
                     times: new[] { NSValue.FromCMTime(audioAsset.Duration) },
                     queue: null,
-                    handler: () => Seek(0));
+                    handler: () =>
+                    {
+                        _isPlaying = false;
+                        Seek(0);
+                    });
 
                 return true;
             }
@@ -85,17 +125,18 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
 
         public void Play()
         {
-            if (_player == null) return;
+            if (_player == null || _isPlaying) return;
 
             _player.Play();
+            _isPlaying = true;
         }
 
         public void Stop()
         {
             if (_player == null) return;
 
-            _player.Pause();
-            _player.Seek(CMTime.FromSeconds(0, _timeScale));
+            Pause();
+            Seek(0);
         }
         
         public void Pause()
@@ -103,6 +144,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.iOS
             if (_player == null) return;
 
             _player.Pause();
+            _isPlaying = false;
         }
 
         public void Seek(double pos)

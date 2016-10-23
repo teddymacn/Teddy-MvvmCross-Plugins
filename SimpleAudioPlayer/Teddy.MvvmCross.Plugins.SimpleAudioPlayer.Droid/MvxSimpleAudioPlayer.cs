@@ -8,9 +8,10 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
     public class MvxSimpleAudioPlayer : IMvxSimpleAudioPlayer
     {
         private const string Root = "/";
-        private const double InvalidDuration = -1;
+        private const double InvalidValue = -1;
 
         private MediaPlayer _player;
+        private double _volume = 0.5;
 
         #region IMvxSimpleAudioPlayer Members
 
@@ -20,9 +21,47 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer.Droid
         {
             get
             {
-                if (_player == null) return -1;
+                if (_player == null) return InvalidValue;
 
                 return _player.Duration;
+            }
+        }
+
+        public double Position
+        {
+            get
+            {
+                if (_player == null) return InvalidValue;
+
+                return _player.CurrentPosition;
+            }
+        }
+
+        public bool IsPlaying
+        {
+            get
+            {
+                if (_player == null) return false;
+
+                return _player.IsPlaying;
+            }
+        }
+
+        public double Volume
+        {
+            get
+            {
+                if (_player == null) return InvalidValue;
+
+                return _volume;
+            }
+
+            set
+            {
+                if (_player == null) return;
+
+                _volume = value;
+                _player.SetVolume((float)value, (float)value);
             }
         }
 

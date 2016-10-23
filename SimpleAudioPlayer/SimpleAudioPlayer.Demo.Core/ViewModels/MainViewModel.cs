@@ -41,6 +41,7 @@ namespace SimpleAudioPlayer.Demo.Core.ViewModels
 
             // by default, testing playing audio from Assets
             _player.Open("test.mp3");
+            _player.Volume = 1;
             _player.Play();
 
             // comment the code above and uncomment the code below
