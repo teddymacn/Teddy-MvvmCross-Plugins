@@ -7,21 +7,20 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer
     {
         public static void SetUpLooping(this IMvxSimpleAudioPlayer player)
         {
-            var playbackHandler = new EventHandler(delegate (Object o, EventArgs a)
-            {
-                player.Play();
-            });
-
-            registeredPlaybackHandler[player] = playbackHandler;
-            player.Completion += playbackHandler;
+            player.Completion += ReplayOnCompletion;
         }
 
         public static void TearDownLooping(this IMvxSimpleAudioPlayer player)
         {
-            player.Completion -= registeredPlaybackHandler[player];
-            registeredPlaybackHandler.Remove(player);
+            player.Completion -= ReplayOnCompletion;
         }
 
-        private static Dictionary<IMvxSimpleAudioPlayer, EventHandler> registeredPlaybackHandler;
+        private static void ReplayOnCompletion(object sender, EventArgs e)
+        {
+            IMvxSimpleAudioPlayer player = sender as IMvxSimpleAudioPlayer;
+            player.Play();
+        }
+
+        
     }
 }
