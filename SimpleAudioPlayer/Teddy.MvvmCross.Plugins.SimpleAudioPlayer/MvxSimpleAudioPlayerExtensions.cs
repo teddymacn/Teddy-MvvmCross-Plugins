@@ -20,7 +20,5 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer
             IMvxSimpleAudioPlayer player = sender as IMvxSimpleAudioPlayer;
             player.Play();
         }
-
-        
     }
 }
