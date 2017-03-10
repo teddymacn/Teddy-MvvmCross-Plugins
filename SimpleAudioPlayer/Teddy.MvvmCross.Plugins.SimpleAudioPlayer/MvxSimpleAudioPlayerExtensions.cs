@@ -18,7 +18,7 @@ namespace Teddy.MvvmCross.Plugins.SimpleAudioPlayer
 
         public static void TearDownLooping(this IMvxSimpleAudioPlayer player)
         {
-            player.Completion += registeredPlaybackHandler[player];
+            player.Completion -= registeredPlaybackHandler[player];
             registeredPlaybackHandler.Remove(player);
         }
 
