@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IMvxSimpleAudioPlayer.cs" />
+    <Compile Include="MvxSimpleAudioPlayerExtensions.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
